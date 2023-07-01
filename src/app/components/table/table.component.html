@@ -1,0 +1,26 @@
+<div class="container">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>OrderDate</th>
+          <th>Region</th>
+          <th>City</th>
+          <th>Category</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of foodSales">
+          <td>{{ item.orderDate| date:'yyyy-MM-dd' }}</td>
+          <td>{{ item.region }}</td>
+          <td>{{ item.city }}</td>
+          <td>{{ item.category }}</td>
+          <td>
+            <button class="btn btn-primary" (click)="editItem(item)">Edit</button>
+            <button class="btn btn-danger" (click)="deleteItem(item)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
