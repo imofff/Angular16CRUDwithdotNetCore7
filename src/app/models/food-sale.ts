@@ -8,4 +8,5 @@ export class FoodSale {
     quantity = 0;
     unitPrice = 0;
     totalPrice = 0;
+    [key: string]: any;
 }
