@@ -9,6 +9,7 @@ import { environment } from '../../environments/environment';
 export class FoodSaleService {
   private url = 'FoodSale';
   constructor(private http: HttpClient) {}
+  
 
   public getTransactionFoodSales(): Observable<FoodSale[]> {
     return this.http.get<FoodSale[]>(`${environment.apiUrl}/${this.url}`);
@@ -19,20 +20,8 @@ export class FoodSaleService {
   public deleteTransactionFoodSale(foodSaleId: number): Observable<void> {
     return this.http.delete<void>(`${environment.apiUrl}/${this.url}/${foodSaleId}`);
   }
+  public addFoodSale(foodSale: FoodSale): Observable<FoodSale> {
+    return this.http.post<FoodSale>(`${environment.apiUrl}/${this.url}`, foodSale);
+  }
   
-
-  // public getTransactionFoodSales(): FoodSale[] {
-  //   let transactionFoodSale = new FoodSale();
-  //   transactionFoodSale.id = 1;
-  //   transactionFoodSale.orderDate= new Date();
-  //   transactionFoodSale.region = "Thai";
-  //   transactionFoodSale.city = "Bangkok";
-  //   transactionFoodSale.category = "Bars";
-  //   transactionFoodSale.product = "Carrot";
-  //   transactionFoodSale.quantity = 33;
-  //   transactionFoodSale.unitPrice = 1.77;
-  //   transactionFoodSale.totalPrice = transactionFoodSale.quantity * transactionFoodSale.unitPrice;
-
-  //   return [transactionFoodSale];
-  // }
 }

@@ -10,12 +10,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TableComponent } from './components/table/table.component';
 import { EditFoodSaleDialogComponent } from './components/edit-food-sale-dialog/edit-food-sale-dialog.component';
+import { CreateFoodSaleDialogComponent } from './components/create-food-sale-dialog/create-food-sale-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TableComponent,
-    EditFoodSaleDialogComponent
+    EditFoodSaleDialogComponent,
+    CreateFoodSaleDialogComponent
   ],
   imports: [
     BrowserModule,

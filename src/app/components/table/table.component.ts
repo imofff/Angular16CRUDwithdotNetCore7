@@ -4,6 +4,7 @@ import { FoodSaleService } from 'src/app/services/food-sale.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { MatDialog } from '@angular/material/dialog';
 import { EditFoodSaleDialogComponent } from '../edit-food-sale-dialog/edit-food-sale-dialog.component';
+import { CreateFoodSaleDialogComponent } from '../create-food-sale-dialog/create-food-sale-dialog.component';
 
 
 @Component({
@@ -16,6 +17,35 @@ export class TableComponent implements OnInit {
   sortedColumn: string = ''; // Track the currently sorted column
   sortDirection: string = 'asc'; // Track the sorting direction
   filterDate: string = ''; // Track the filter value for orderDate
+  createItem(): void {
+    // Open a dialog or navigate to a separate component for creating a new FoodSale entry
+    // Handle the form inputs and call the create service method
+    
+    // Example implementation:
+    const dialogRef = this.dialog.open(CreateFoodSaleDialogComponent, {
+      width: '400px', // Set the desired dialog width
+    });
+  
+    dialogRef.afterClosed().subscribe((result: FoodSale | undefined) => {
+      if (result) {
+        this.foodSaleService.addFoodSale(result).subscribe(
+          () => {
+            console.log('Food sale created successfully');
+            // Display a success notification
+            this.notificationService.success('Food sale created successfully');
+            this.foodSales.push(result); 
+            // You can perform additional actions here, such as refreshing the food sales list
+          },
+          (error) => {
+            console.log('Error creating food sale:', error);
+            // Display an error notification
+            this.notificationService.error('Failed to create food sale');
+            // Handle the error, display an error message, etc.
+          }
+        );
+      }
+    });
+  }
   sortColumn(column: string): void {
     // If the clicked column is already sorted, reverse the sorting direction
     if (column === this.sortedColumn) {

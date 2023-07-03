@@ -35,7 +35,7 @@ export class EditFoodSaleDialogComponent {
 
   calculateTotalPrice(): void {
     // Calculate the Total Price based on the current Unit Price and Quantity
-    this.foodSale.totalPrice = parseFloat((this.foodSale.unitPrice * this.foodSale.quantity).toFixed(2));
+    this.foodSale.totalPrice = Number((this.foodSale.unitPrice * this.foodSale.quantity).toFixed(2));
   }
 
   onUnitPriceChange(): void {
